@@ -23,11 +23,14 @@ def graph_one():
 	pos = df.loc[i]
 	neg = df.loc[(i + 1)]	
 	ax1 = plt.subplot2grid((2, 2), (0, 0), colspan=2)
-	ax1.plot(tt, pos, 'r-')
-	ax1.plot(tt, neg, 'r--')
+	ax1.plot(tt, pos, 'r-', label="Ppd-D1a")
+	ax1.plot(tt, neg, 'r--', label="Ppd-D1b")
 	ax1.set_xlabel("Thermal time")
 	ax1.set_ylabel("R:FR")
-	ax1.autoscale(enable=True, tight=True)
+	ax1.legend(loc="upper left")
+	ax1.yaxis.grid(color='gray', linestyle='--')
+	ax1.xaxis.grid(color='gray', linestyle='--')
+	ax1.autoscale(enable=True, tight=True, axis=x)
 	# Plot on ax2
 	ax2_y = daily_par.loc[i]
 	ax2_x = par["tt"][0:len(ax2_y)]
@@ -45,6 +48,8 @@ def graph_one():
 	ax3.bar(ax3_x, ax3_y)
 	ax3.autoscale(enable=True, tight=True)
 	plt.show()
+	#plt.savefig(fname=("C:\\users\\john\\google drive\\thesis\\chapter 3\\chapter 3 data\\results_ppd_comparison.png")
+	#	, dpi=None, facecolor='w', orientation='portrait', transparent=True)
 
 
 graph_one()	
