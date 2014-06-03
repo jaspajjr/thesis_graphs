@@ -32,6 +32,8 @@ def scatter(x_series, y_series):
 	fig = plt.figure()
 	ax = fig.add_subplot(111)
 	axis_text_size = 8
+	x_series = x_series.dropna()
+	y_series = y_series.dropna()
 	x_list = x_series.loc["Ren":"SRen99"]
 	y_list = y_series.loc["Ren":"SRen99"]
 	x_err = x_series.loc["Avg"]
@@ -51,9 +53,9 @@ def scatter(x_series, y_series):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	ax.errorbar(x=550, y=9, xerr=x_err, yerr=y_err, color='black')
+	ax.errorbar(x=1780, y=1500, xerr=x_err, yerr=y_err, color='black')
 
 
 	plt.show()
 
-scatter(df["int_anth_sen"], df["yield"])
+scatter(df["anth"], df["max_rfr_tt"])
