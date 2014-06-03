@@ -51,9 +51,9 @@ def scatter(x_series, y_series):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	ax.errorbar(x=780, y=1800, xerr=x_err, yerr=y_err, color='black')
+	ax.errorbar(x=550, y=9, xerr=x_err, yerr=y_err, color='black')
 
 
 	plt.show()
 
-scatter(df["t_par"], df["int_sen"])
+scatter(df["int_anth_sen"], df["yield"])
