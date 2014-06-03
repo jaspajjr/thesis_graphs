@@ -16,8 +16,6 @@ del daily_par["Unnamed: 0"]
 def graph_one():
 	tt = [x for x in xrange(0, 3001)]
 	i = 2
-	x_list = [x for x in xrange(0, 330)]
-	y_list = [(7 + x) for x in xrange(0, 330)]
 	# Plot on ax1
 	fig = plt.figure(figsize=(8, 16))
 	pos = df.loc[i]
