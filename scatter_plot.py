@@ -53,10 +53,10 @@ def scatter(x_series, y_series):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	ax.errorbar(x=1775, y=-0.0001, xerr=x_err, yerr=y_err, color='black')
-	ax.set_xlim(1750, 2000)
-	ax.set_ylim(-0.0004, 0.0001)
+	ax.errorbar(x=1775, y=0.0001, xerr=x_err, yerr=y_err, color='black')
+	#ax.set_xlim(1750, 2000)
+	ax.set_ylim(-200, 300)
 
 	plt.show()
 
-scatter(df["anth"], df["dy_15_post_anth"])
+scatter(df["anth"], df["anth_to_max_rfr"])
