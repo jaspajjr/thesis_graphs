@@ -32,15 +32,15 @@ def scatter(x_series, y_series):
 	fig = plt.figure()
 	ax = fig.add_subplot(111)
 	axis_text_size = 8
-	x_series = x_series.dropna()
-	y_series = y_series.dropna()
+	#x_series = x_series.dropna()
+	#y_series = y_series.dropna()
 	x_list = x_series.loc["Ren":"SRen99"]
 	y_list = y_series.loc["Ren":"SRen99"]
 	x_err = x_series.loc["Avg"]
 	y_err = y_series.loc["Avg"]
 	ax.plot(x_list, y_list, color='black', marker='x', linestyle='none',
-		markersize=8,
-		label="%s v %s" %(x_series.name, y_series.name))
+		markersize=8) #,
+		#label="%s v %s" %(x_series.name, y_series.name))
 	ax.set_xlabel(x_series.name, fontsize=axis_text_size)
 	ax.set_ylabel(y_series.name, fontsize=axis_text_size)
 	ax.xaxis.grid(color='gray', linestyle='--')
@@ -53,9 +53,10 @@ def scatter(x_series, y_series):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	ax.errorbar(x=1780, y=1500, xerr=x_err, yerr=y_err, color='black')
-
+	ax.errorbar(x=1775, y=-0.0001, xerr=x_err, yerr=y_err, color='black')
+	ax.set_xlim(1750, 2000)
+	ax.set_ylim(-0.0004, 0.0001)
 
 	plt.show()
 
-scatter(df["anth"], df["max_rfr_tt"])
+scatter(df["anth"], df["dy_15_post_anth"])
