@@ -28,7 +28,7 @@ def annotate_maker(x_series, y_series):
 		annotate_list.append(temp)
 	return annotate_list
 
-def scatter(x_series, y_series):
+def scatter(x_series, y_series, descriptions_dict):
 	fig = plt.figure()
 	ax = fig.add_subplot(111)
 	axis_text_size = 8
@@ -41,8 +41,12 @@ def scatter(x_series, y_series):
 	ax.plot(x_list, y_list, color='black', marker='x', linestyle='none',
 		markersize=8) #,
 		#label="%s v %s" %(x_series.name, y_series.name))
-	ax.set_xlabel(x_series.name, fontsize=axis_text_size)
+	#print "$\%s$" %(descriptions_dict[(x_series.name)])
+	#ax.set_xlabel(r"$\%s \$" %descriptions_dict[(x_series.name)], fontsize=axis_text_size)
+	#test = (r'Anthesis ($\degree C days$)')
+	ax.set_xlabel(descriptions_dict[(x_series.name)])
 	ax.set_ylabel(y_series.name, fontsize=axis_text_size)
+	#ax.set_title(r'%s $\alpha \degree > \beta $' %test)
 	ax.xaxis.grid(color='gray', linestyle='--')
 	ax.yaxis.grid(color="gray", linestyle='--')
 	ax.tick_params(axis='both', which='major', labelsize=axis_text_size)
@@ -59,4 +63,5 @@ def scatter(x_series, y_series):
 
 	plt.show()
 
-scatter(df["anth"], df["anth_to_max_rfr"])
+# '$\sqrt{x}$'
+scatter(df["anth"], df["anth_to_max_rfr"], descriptions_dict)
