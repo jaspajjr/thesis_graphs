@@ -39,13 +39,9 @@ def scatter(x_series, y_series, descriptions_dict):
 	x_err = x_series.loc["Avg"]
 	y_err = y_series.loc["Avg"]
 	ax.plot(x_list, y_list, color='black', marker='x', linestyle='none',
-		markersize=8) #,
-		#label="%s v %s" %(x_series.name, y_series.name))
-	#print "$\%s$" %(descriptions_dict[(x_series.name)])
-	#ax.set_xlabel(r"$\%s \$" %descriptions_dict[(x_series.name)], fontsize=axis_text_size)
-	#test = (r'Anthesis ($\degree C days$)')
+		markersize=8)
 	ax.set_xlabel(descriptions_dict[(x_series.name)])
-	ax.set_ylabel(y_series.name, fontsize=axis_text_size)
+	ax.set_ylabel(descriptions_dict[y_series.name])
 	#ax.set_title(r'%s $\alpha \degree > \beta $' %test)
 	ax.xaxis.grid(color='gray', linestyle='--')
 	ax.yaxis.grid(color="gray", linestyle='--')
@@ -57,11 +53,11 @@ def scatter(x_series, y_series, descriptions_dict):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	ax.errorbar(x=1775, y=0.0001, xerr=x_err, yerr=y_err, color='black')
+	#ax.errorbar(x=1775, y=2730, xerr=x_err, yerr=y_err, color='black')
 	#ax.set_xlim(1750, 2000)
-	ax.set_ylim(-200, 300)
+	#ax.set_ylim(2500, 2820)
 
 	plt.show()
 
 # '$\sqrt{x}$'
-scatter(df["anth"], df["anth_to_max_rfr"], descriptions_dict)
+scatter(df["anth"], df["t_par"], descriptions_dict)
