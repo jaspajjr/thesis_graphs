@@ -53,11 +53,11 @@ def scatter(x_series, y_series, descriptions_dict):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	#ax.errorbar(x=1775, y=2730, xerr=x_err, yerr=y_err, color='black')
-	#ax.set_xlim(1750, 2000)
-	#ax.set_ylim(2500, 2820)
+	ax.errorbar(x=1775, y=375, xerr=x_err, yerr=y_err, color='black')
+	ax.set_xlim(1750, 2000)
+	#ax.set_ylim(295, 600)
 
 	plt.show()
 
 # '$\sqrt{x}$'
-scatter(df["anth"], df["t_par"], descriptions_dict)
+scatter(df["anth"], df["par_gs31_anth"], descriptions_dict)

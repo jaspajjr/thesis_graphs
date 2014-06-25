@@ -1,6 +1,6 @@
 ''' This script is designed to perform a simple OLS multiple regression
 '''
-
+import statsmodels.api as sm
 import numpy as np 
 import matplotlib.pyplot as plt 
 import pandas as pd 
