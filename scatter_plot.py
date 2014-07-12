@@ -9,11 +9,11 @@ import pandas as pd
 from matplotlib import gridspec
 
 # Inputs data
-df = pd.read_csv("C:\\users\\john\\google drive\\thesis\\chapter 3\\chapter 3 data\\canopy_model.csv", na_values=["*"])
+df = pd.read_csv("C:\\users\\john\\google drive\\thesis\\chapter 2\\chapter 2 data\\2008.csv", na_values=["*"])
 df.columns = [str.lower(x) for x in df.columns]
 df.index = df["line"]
 del df["line"]
-col_des = pd.read_csv("C:\\users\\john\\google drive\\thesis\\chapter 3\\chapter 3 data\\col_descriptions_canopy.csv")
+col_des = pd.read_csv("C:\\users\\john\\google drive\\thesis\\chapter 2\\chapter 2 data\\col_descriptions_2008.csv")
 descriptions_dict = dict(zip(df.columns, col_des["Line"]))
 
 def annotate_maker(x_series, y_series):
@@ -36,8 +36,8 @@ def scatter(x_series, y_series, descriptions_dict):
 	#y_series = y_series.dropna()
 	x_list = x_series.loc["Ren":"SRen99"]
 	y_list = y_series.loc["Ren":"SRen99"]
-	x_err = x_series.loc["Avg"]
-	y_err = y_series.loc["Avg"]
+	x_err = x_series.loc["S.E.D"]
+	y_err = y_series.loc["S.E.D"]
 	ax.plot(x_list, y_list, color='black', marker='x', linestyle='none',
 		markersize=8)
 	ax.set_xlabel(descriptions_dict[(x_series.name)])
@@ -53,11 +53,14 @@ def scatter(x_series, y_series, descriptions_dict):
 			arrowprops=dict(arrowstyle="->", connectionstyle='arc3, rad=0.5',
 			color='gray'), fontsize=8)
 	#ax.autoscale(enable=True, tight=True, axis=x)
-	ax.errorbar(x=1775, y=375, xerr=x_err, yerr=y_err, color='black')
-	ax.set_xlim(1750, 2000)
-	#ax.set_ylim(295, 600)
+	''' For each graph the location of the error bar may need to change,
+	use ax.errorbar to change the location of the errorbar
+	'''
+	ax.errorbar(x=1555, y=0.007, xerr=x_err, yerr=y_err, color='black')
+	ax.set_xlim(1500, 1900)
+	#ax.set_ylim(.35, .65)
 
 	plt.show()
 
 # '$\sqrt{x}$'
-scatter(df["anth"], df["par_gs31_anth"], descriptions_dict)
+scatter(df["anth"], df["yield_fill"], descriptions_dict)
